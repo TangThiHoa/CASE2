@@ -52,20 +52,20 @@ public class Main {
                                         }
                                         switch (choice2) {
                                             case 1:
-                                                SatffMenu.menuStaffShowAll();
+                                                SatffMenu.menuStaffShowAll(manageStaff);
                                                 break;
                                             case 2:
-                                                SatffMenu.menuStaffFull();
+                                                SatffMenu.menuStaffFull(manageStaff);
                                                 break;
-//                                            case 3:
-//                                                SatffMenu.menuStaffPart();
-//                                                break;
-//                                            case 4:
-//                                                SatffMenu.menuSafull();
-//                                                break;
-//                                            case 5:
-//                                                SatffMenu.menuSaPart();
-//                                                break;
+                                            case 3:
+                                                SatffMenu.menuStaffPart(manageStaff);
+                                                break;
+                                            case 4:
+                                                SatffMenu.menuSafull(manageStaff);
+                                                break;
+                                            case 5:
+                                                SatffMenu.menuSaPart(manageStaff);
+                                                break;
                                             case 6:
                                                 SatffMenu.menuStaffShowName();
                                                 break;
@@ -74,6 +74,7 @@ public class Main {
                                                     SatffMenu.menuStaffAdd(manageStaff, manageUser);
                                                 }
                                                 break;
+                                            case 8 :
 
                                         }
 

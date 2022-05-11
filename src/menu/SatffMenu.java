@@ -35,8 +35,7 @@ public class SatffMenu {
         System.out.print("Nhập lựa chọn : ");
     }
 
-    public static void menuStaffShowAll() throws IOException {//HIển thị danh sách nv
-        ManageStaff manageStaff = new ManageStaff();
+    public static void menuStaffShowAll(ManageStaff manageStaff) throws IOException {//HIển thị danh sách nv
         System.out.println("Danh sách tổng số nhân viên : ");
         manageStaff.showAll();
     }
@@ -92,29 +91,25 @@ public class SatffMenu {
         } else System.out.println("Không tìm thấy ID");
     }
 
-    public static void menuStaffFull() throws IOException {
-        ManageStaff manageStaff = new ManageStaff();
+    public static void menuStaffFull(ManageStaff manageStaff) throws IOException {
         System.out.println("Danh sách nhân viên fulltime : ");
-        manageStaff.showAll();
+        manageStaff.filterFullTime();
     }
-//    public static void menuStaffPart() throws IOException {
-//        ManageUser manageUser = new ManageUser();
-//        System.out.println("Danh sách nhân viên parttime : ");
-//        manageUser.filterParttime();
-//
-//    }
-    public  static void menuSafull() throws IOException {
-        ManageStaff manageStaff = new ManageStaff();
+    public static void menuStaffPart(ManageStaff manageStaff) throws IOException {
+        System.out.println("Danh sách nhân viên parttime : ");
+        manageStaff.filterPartTime();
+
+    }
+    public  static void menuSafull(ManageStaff manageStaff) throws IOException {
         System.out.println("Lương nhân viên fulltime  : ");
         manageStaff.calSalaryFulltime();
 
     }
-//    public  static void menuSaPart() throws IOException {
-//        ManageUser manageUser = new ManageUser();
-//        System.out.println("Lương nhân viên parttime  : ");
-//        manageUser.calSalaryParttime();
-//
-//    }
+    public  static void menuSaPart(ManageStaff manageStaff) throws IOException {
+        System.out.println("Lương nhân viên parttime  : ");
+        manageStaff.calSalaryParttime();
+
+    }
 
 
 
