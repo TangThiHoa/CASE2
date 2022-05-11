@@ -1,4 +1,4 @@
 ID,NAME,TYPE,STATUS,SALARY,ID USER
-1,Hoa,fulltime,on,700000,hoacho
-2,HoaCho,parttime,on,500000,hoacho2
-3,abc,fulltime,on,800000,hoacho
+1,Hoa,fulltime,Nghỉ việc ,700000,hoacho
+2,HoaCho,Đang nghỉ ,Nghỉ việc ,0,hoacho2
+3,abc,Đang nghỉ ,Nghỉ việc ,0,hoacho

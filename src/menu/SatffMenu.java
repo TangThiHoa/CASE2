@@ -110,6 +110,13 @@ public class SatffMenu {
         manageStaff.calSalaryParttime();
 
     }
+    public static void menuEditStatus(ManageStaff manageStaff) throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhập id nhân viên cần sửa : ");
+        int id = scanner.nextInt();
+        manageStaff.showByStatusOn(id);
+        FileStaffCSV.writeToFile("staff.csv",manageStaff.getStaffList());
+    }
 
 
 

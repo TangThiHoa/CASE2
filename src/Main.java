@@ -74,7 +74,12 @@ public class Main {
                                                     SatffMenu.menuStaffAdd(manageStaff, manageUser);
                                                 }
                                                 break;
-                                            case 8 :
+                                            case 8:
+                                                break;
+                                            case 9 :
+                                                if (ManageUser.currentUser.getRole().getName().equals("Admin")) {
+                                                    SatffMenu.menuEditStatus(manageStaff);
+                                            }break;
 
                                         }
 
