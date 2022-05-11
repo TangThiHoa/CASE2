@@ -28,7 +28,8 @@ public class UserMenu {
         System.out.println(ManageUser.currentUser);
     }
 
-    public static void changePass(ManageUser manageUser) throws IOException {
+    public static void changePass() throws IOException {
+        ManageUser manageUser = new ManageUser();
         Scanner scc = new Scanner(System.in);
         while (true) {
             System.out.println("Nhập pass mới : ");

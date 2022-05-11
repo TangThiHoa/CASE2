@@ -31,12 +31,14 @@ public class SatffMenu {
         System.out.print("Nhập lựa chọn : ");
     }
 
-    public static void menuStaffShowAll(ManageUser manageUser) {      //HIển thị danh sách nv
+    public static void menuStaffShowAll() throws IOException {//HIển thị danh sách nv
+        ManageUser manageUser = new ManageUser();
         System.out.println("Danh sách tổng số nhân viên : ");
         manageUser.showAll();
     }
 
-    public static void menuStaffShowName(ManageUser manageUser) {       //tìm nhân viên
+    public static void menuStaffShowName() throws IOException {
+        ManageUser manageUser = new ManageUser() ; //tìm nhân viên
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập ID nhân viên cần tìm :");
         int staffName = sc.nextInt();
@@ -86,6 +88,32 @@ public class SatffMenu {
 
         } else System.out.println("Không tìm thấy ID");
     }
+
+    public static void menuStaffFull() throws IOException {
+        ManageUser manageUser = new ManageUser();
+        System.out.println("Danh sách nhân viên fulltime : ");
+        manageUser.filterFulltime();
+
+    }
+    public static void menuStaffPart() throws IOException {
+        ManageUser manageUser = new ManageUser();
+        System.out.println("Danh sách nhân viên parttime : ");
+        manageUser.filterParttime();
+
+    }
+    public  static void menuSafull() throws IOException {
+        ManageUser manageUser = new ManageUser();
+        System.out.println("Lương nhân viên fulltime  : ");
+        manageUser.calSalaryFulltime();
+
+    }
+    public  static void menuSaPart() throws IOException {
+        ManageUser manageUser = new ManageUser();
+        System.out.println("Lương nhân viên parttime  : ");
+        manageUser.calSalaryParttime();
+
+    }
+
 
 
 }
