@@ -1,37 +1,39 @@
 package file;
 
 import manage.ManageRole;
+import mode.Role;
 import mode.User;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class FileUserCSV {
     private static String path;
 
-    public static void writeToFile(List<User> userList) throws IOException {
-        FileWriter fileWriter = new FileWriter(path);
-        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        String str = "id,name,pass,status,role \n";
+    public static void writeToFile(String path, List<User> userList) throws IOException {
+        File file = new File(path);
+        PrintWriter pw = new PrintWriter(file);
+        String str = "ID, Username, Password, Role \n";
         for (User user : userList) {
-            str += user;
+            str += user.getId() + "," + user.getUsername() + "," + user.getPassword() + "," + user.getRole().getId() +"\n";
         }
-        bufferedWriter.write(str);
-        bufferedWriter.close();
+        pw.write(str);
+        pw.close();
     }
 
-    public static List<User> readFromFile(String path) throws IOException {
-        List<User> userList = new ArrayList<>();
+    public static List<User> readFromFile(String path, List<User> userList) throws IOException {
         ManageRole manageRole = new ManageRole();
-        FileReader fileReader = new FileReader(path);
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
-        String str = bufferedReader.readLine();
-        while ((str = bufferedReader.readLine()) != null) {
-            if (str.equals("")) {
-                break;
-            }
+        File file = new File(path);
+        Scanner sc = new Scanner(file);
+        sc.nextLine();
+        while (sc.hasNext()) {
+            String a = sc.nextLine();
+            String[] value = a.split(",");
+            Role role = manageRole.findById(Integer.parseInt(value[3]));
+            userList.add(new User(Integer.parseInt(value[0]), value[1], value[2], role));
 
-        }return userList;
+        }
+        return userList;
     }
 }

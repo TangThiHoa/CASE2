@@ -1,7 +1,11 @@
 package menu;
 
+import file.FileStaffCSV;
 import file.FileUserCSV;
+import file.Path;
+import manage.ManageStaff;
 import manage.ManageUser;
+import mode.Staff;
 import mode.User;
 
 import java.io.IOException;
@@ -32,24 +36,25 @@ public class SatffMenu {
     }
 
     public static void menuStaffShowAll() throws IOException {//HIển thị danh sách nv
-        ManageUser manageUser = new ManageUser();
+        ManageStaff manageStaff = new ManageStaff();
         System.out.println("Danh sách tổng số nhân viên : ");
-        manageUser.showAll();
+        manageStaff.showAll();
     }
 
     public static void menuStaffShowName() throws IOException {
-        ManageUser manageUser = new ManageUser() ; //tìm nhân viên
+        ManageStaff manageStaff = new ManageStaff();
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập ID nhân viên cần tìm :");
         int staffName = sc.nextInt();
-        manageUser.findIndexById(staffName);
+        manageStaff.findIndexById(staffName);
     }
 
-    public static void menuStaffAdd(ManageUser manageUser) throws IOException {
+    public static void menuStaffAdd(ManageStaff manageStaff,ManageUser manageUser) throws IOException {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập ID nhân viên ");
-        String id = sc.nextLine();
-        if (manageUser.findIndexById(Integer.parseInt(id)) == -1) {
+        int id = sc.nextInt();
+        sc.nextLine();
+        if (manageStaff.findIndexById(id) == -1) {
             System.out.println("Nhập tên nhân viên ");
             String name = sc.nextLine();
             System.out.println("Nhập loại nhân viên  ");
@@ -57,13 +62,11 @@ public class SatffMenu {
             System.out.println("Nhập trạng thái nhân viên  ");
             String status = sc.nextLine();
             System.out.println("Nhập lương");
-            int salary = sc.nextInt();
+            String salary = sc.nextLine();
             User user = manageUser.findById(ManageUser.currentUser.getId());
-            manageUser.add(new User(id, name, stype, status, salary, user));
+            manageStaff.add(new Staff(id, name, stype, status, salary,user));
             System.out.println("Bạn đã thêm " + name + "thành công");
-            FileUserCSV.writeToFile(manageUser.getUserList());
-
-
+            FileStaffCSV.writeToFile("staff.csv",manageStaff.getStaffList());
         } else System.out.println("ID nhân viên đã tồn tại");
     }
 
@@ -84,35 +87,34 @@ public class SatffMenu {
             User user = manageUser.findById(ManageUser.currentUser.getId());
             manageUser.edit(id, new User(id, name, stype, status, salary, user));
             System.out.println("Bạn đã sửa thành công");
-            FileUserCSV.writeToFile(manageUser.getUserList());
+            FileUserCSV.writeToFile(Path.PATH_USER,manageUser.getUserList());
 
         } else System.out.println("Không tìm thấy ID");
     }
 
     public static void menuStaffFull() throws IOException {
-        ManageUser manageUser = new ManageUser();
+        ManageStaff manageStaff = new ManageStaff();
         System.out.println("Danh sách nhân viên fulltime : ");
-        manageUser.filterFulltime();
-
+        manageStaff.showAll();
     }
-    public static void menuStaffPart() throws IOException {
-        ManageUser manageUser = new ManageUser();
-        System.out.println("Danh sách nhân viên parttime : ");
-        manageUser.filterParttime();
-
-    }
+//    public static void menuStaffPart() throws IOException {
+//        ManageUser manageUser = new ManageUser();
+//        System.out.println("Danh sách nhân viên parttime : ");
+//        manageUser.filterParttime();
+//
+//    }
     public  static void menuSafull() throws IOException {
-        ManageUser manageUser = new ManageUser();
+        ManageStaff manageStaff = new ManageStaff();
         System.out.println("Lương nhân viên fulltime  : ");
-        manageUser.calSalaryFulltime();
+        manageStaff.calSalaryFulltime();
 
     }
-    public  static void menuSaPart() throws IOException {
-        ManageUser manageUser = new ManageUser();
-        System.out.println("Lương nhân viên parttime  : ");
-        manageUser.calSalaryParttime();
-
-    }
+//    public  static void menuSaPart() throws IOException {
+//        ManageUser manageUser = new ManageUser();
+//        System.out.println("Lương nhân viên parttime  : ");
+//        manageUser.calSalaryParttime();
+//
+//    }
 
 
 

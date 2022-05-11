@@ -1,14 +1,27 @@
 package manage;
 
+import file.FileRoleCSV;
+import file.FileUserCSV;
+import file.Path;
 import mode.Role;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ManageRole {
     List<Role> roleList = new ArrayList<>();
 
-    public ManageRole() {
+    public List<Role> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
+    }
+
+    public ManageRole() throws IOException {
+        roleList = FileRoleCSV.readFromFile(Path.PATH_ROLE,roleList);
     }
 
     public ManageRole(List<Role> roleList) {

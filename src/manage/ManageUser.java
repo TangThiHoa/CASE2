@@ -3,11 +3,14 @@ package manage;
 import file.FileUserCSV;
 import file.Path;
 import mode.Role;
+import mode.Staff;
 import mode.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static file.Path.PATH_USER;
 
 public class ManageUser {
     List<User> userList = new ArrayList<>();
@@ -18,7 +21,7 @@ public class ManageUser {
     }
 
     public ManageUser() throws IOException {
-        userList = FileUserCSV.readFromFile(Path.PATH_USER);
+        userList = FileUserCSV.readFromFile(PATH_USER, userList);
 
     }
 
@@ -79,53 +82,15 @@ public class ManageUser {
         }
         return str;
     }
-
-    public void filterParttime() {
+    public int findByIndexName(String name){
         for (int i = 0; i < userList.size(); i++) {
-            if (userList.get(i).getType().equals(" Parttime ")) {
-                System.out.println(" Danh sách NV Parttime là : ");
-                System.out.println(userList.get(i));
-
+            if (userList.get(i).getUsername().equals(name)){
+                return i;
             }
         }
+        return -1;
     }
-
-    public void filterFulltime() {
-        for (int i = 0; i < userList.size(); i++) {
-            if (userList.get(i).getType().equals(" Fulltime ")) {
-                System.out.println("  Danh sách NV Fulltime là : ");
-                System.out.println(userList.get(i));
-
-            }
-        }
+    public User findByName(String name){
+        return userList.get(findByIndexName(name));
     }
-
-    public void updateStaffStatus(String name) throws Exception {
-        int index = findIndexById(Integer.parseInt(name));
-        if (index != -1) {
-            boolean change = !userList.get(index).isStatus();
-            userList.get(index).setStatus(change);
-            FileUserCSV.writeToFile(userList);
-            System.out.println("Update trạng thái công việc thành công! ");
-        } else {
-            System.out.println("Không có " + name + " trong danh sách!!!");
-        }
-    }
-    public void calSalaryParttime() {
-        for (int i = 0; i < userList.size(); i++) {
-            if (userList.get(i).getType().equals(" Parttime ")) {
-                System.out.println(userList.get(i).getUsername() + " có lương : " + userList.get(i).getSalary());
-            }
-
-        }
-    }
-    public void calSalaryFulltime() {
-        for (int i = 0; i < userList.size(); i++) {
-            if (userList.get(i).getType().equals(" Fulltime ")) {
-                System.out.println(userList.get(i).getUsername() + " có lương : " + userList.get(i).getSalary());
-            }
-
-        }
-    }
-
 }

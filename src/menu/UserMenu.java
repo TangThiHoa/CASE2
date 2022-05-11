@@ -1,8 +1,10 @@
 package menu;
 
 import file.FileUserCSV;
+import file.Path;
 import manage.ManageRole;
 import manage.ManageUser;
+import mode.Role;
 import mode.User;
 
 import java.io.IOException;
@@ -24,19 +26,18 @@ public class UserMenu {
 
     public static void information() {
         System.out.println("Thông tin tài khoản của bạn : ");
-        System.out.println("ID,Tên ,Mật Khẩu,Status,Role");
+        System.out.println("ID,Tên ,Mật Khẩu,Role");
         System.out.println(ManageUser.currentUser);
     }
 
-    public static void changePass() throws IOException {
-        ManageUser manageUser = new ManageUser();
+    public static void changePass(ManageUser manageUser) throws IOException {
         Scanner scc = new Scanner(System.in);
         while (true) {
             System.out.println("Nhập pass mới : ");
             String newPass = scc.nextLine();
             ManageUser.currentUser.setPassword(newPass);
             System.out.println("Bạn đã đổi mật khẩu thành công !!");
-            FileUserCSV.writeToFile(manageUser.getUserList());
+            FileUserCSV.writeToFile(Path.PATH_USER,manageUser.getUserList());
             break;
 
 
@@ -45,33 +46,29 @@ public class UserMenu {
 
     }
 
-    public static void register() throws IOException {
-        ManageUser manageUser = new ManageUser();
+    public static void register( ManageUser manageUser) throws IOException {
         ManageRole manageRole = new ManageRole();
         Scanner sc = new Scanner(System.in);
         String status = "1";
         System.out.println("Đăng kí");
         System.out.println("Nhập ID");
-        String id = sc.nextLine();
-        if (manageUser.findIndexById(Integer.parseInt(id)) == -1) {
-            while (true) {
-                System.out.println("Nhập tên tài khoản");
-                String username = sc.nextLine();
-                if (manageUser.findIndexById(Integer.parseInt(username)) == -1) {
-                    while (true) {
-                        System.out.println("Nhập mật khẩu");
-                        String password = sc.nextLine();
-                        manageUser.add(new User(id, username, password));
-                        System.out.println("Bạn đã tạo tài khoản thành công !");
-                        FileUserCSV.writeToFile(manageUser.getUserList());
-                    }
-
-
-                } else System.out.println("Tài khoản đã tồn tại ");
-                break;
-            }
+        int id = sc.nextInt();
+        sc.nextLine();
+        if (manageUser.findIndexById(id)==-1) {
+            System.out.println("Nhập tên tài khoản");
+            String username = sc.nextLine();
+            System.out.println("Nhập mật khẩu");
+            String password = sc.nextLine();
+            manageRole.showAll();
+            System.out.println("Chọn role !!");
+            int id1 = sc.nextInt();
+            sc.nextLine();
+            Role role = manageRole.findById(id1);
+            manageUser.add(new User(id, username, password,role));
+            System.out.println("Bạn đã tạo tài khoản thành công !");
+            FileUserCSV.writeToFile(Path.PATH_USER,manageUser.getUserList());
         }else System.out.println("ID đã tồn tại");
     }
-
-
 }
+
+
