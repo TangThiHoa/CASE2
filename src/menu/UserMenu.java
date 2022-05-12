@@ -12,22 +12,25 @@ import java.util.Scanner;
 
 public class UserMenu {
     public static void mainLogin() {
-        System.out.println("-----------Menu Login---------");
-        System.out.println("1.Trang chủ ");
-        System.out.println("2.Thông tin tài khoản ");
-        System.out.println("3.Đổi mật khẩu");
+        System.out.println("                                                                      MENU LOGIN ");
+        System.out.println("                                                             1. Trang chủ           ");
+        System.out.println("                                                             2. Thông tin tài khoản ");
+        System.out.println("                                                             3. Đổi mật khẩu");
 
         if (ManageUser.currentUser.getRole().getName().equals("Admin")) {
-            System.out.println("4. Thêm , xóa role");
+            System.out.println("                                                             4. Thêm , xóa role");
         }
-        System.out.println("0. Logout");
-        System.out.print("Nhập lựa chọn : ");
+        System.out.println("                                                             0. Logout");
+        System.out.print("                                                    Nhập lựa chọn : ");
     }
 
     public static void information() {
         System.out.println("Thông tin tài khoản của bạn : ");
-        System.out.println("ID,Tên ,Mật Khẩu,Role");
+//        System.out.println("ID ,Tên , Mật Khẩu ,Role ");
         System.out.println(ManageUser.currentUser);
+    }
+    public static void addRole (ManageUser manageUser){
+
     }
 
     public static void changePass(ManageUser manageUser) throws IOException {

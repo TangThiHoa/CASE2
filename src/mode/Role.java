@@ -41,8 +41,8 @@ public class Role {
 
     @Override
     public String toString() {
-        return id + "," +
-                name + "," +
+        return  "Id : " + id + "," + "Tên : " +
+                name + "," + "Quyền truy cập : " +
                 description + "," +
                 "\n";
     }

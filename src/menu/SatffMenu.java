@@ -13,21 +13,21 @@ import java.util.Scanner;
 
 public class SatffMenu {
     public static void menuUser() {
-        System.out.println("=====Quản lí Nhân viên=====");
-        System.out.println(" 1. Hiển thị danh sách nhân viên ");
-        System.out.println(" 2. Hiển thị danh sách nhân viên fulltime ");
-        System.out.println(" 3. Hiển thị danh sách nhân viên parttime");
-        System.out.println(" 4. Lương của nhân viên fulltime ");
-        System.out.println(" 5. Lương của nhân viên parttime ");
-        System.out.println(" 6. Tìm kiếm nhân viên");
+        System.out.println("                                                         MENU STAFF             ");
+        System.out.println("                                      1. Hiển thị danh sách nhân viên ");
+        System.out.println("                                      2. Hiển thị danh sách nhân viên fulltime ");
+        System.out.println("                                      3. Hiển thị danh sách nhân viên parttime");
+        System.out.println("                                      4. Lương của nhân viên fulltime ");
+        System.out.println("                                      5. Lương của nhân viên parttime ");
+        System.out.println("                                      6. Tìm kiếm nhân viên");
     }
 
     public static void menuRole() {
-        System.out.println(" 7. Thêm nhân viên ");
-        System.out.println(" 8. Chỉnh sửa nhân viên ");
-        System.out.println(" 9. Thay đổi trạng thái nhân viên ");
-        System.out.println(" 10 . Thoát ");
-        System.out.println(" Nhập lựa chọn : ");
+        System.out.println("                                      7. Thêm nhân viên ");
+        System.out.println("                                      8. Chỉnh sửa nhân viên ");
+        System.out.println("                                      9. Thay đổi trạng thái nhân viên ");
+        System.out.println("                                      0 . Thoát ");
+        System.out.println("                          Nhập lựa chọn : ");
     }
 
     public static void menuDefault() {
@@ -63,9 +63,9 @@ public class SatffMenu {
             String salary = sc.nextLine();
             User user = manageUser.findById(ManageUser.currentUser.getId());
             manageStaff.add(new Staff(id, name, stype, status, salary,user));
-            System.out.println("Bạn đã thêm " + name + "thành công");
+            System.out.println("Bạn đã thêm " + name + " thành công !");
             FileStaffCSV.writeToFile("staff.csv",manageStaff.getStaffList());
-        } else System.out.println("ID nhân viên đã tồn tại");
+        } else System.err.println("ID nhân viên đã tồn tại");
     }
 
     public static void menuStaffEdit(ManageStaff manageStaff,ManageUser manageUser) throws IOException {
@@ -87,7 +87,7 @@ public class SatffMenu {
             manageStaff.showById(id);
             FileStaffCSV.writeToFile(Path.PATH_STAFF,manageStaff.getStaffList());
 
-        } else System.out.println("Không tìm thấy ID");
+        } else System.err.println("Không tìm thấy ID");
     }
 
     public static void menuStaffFull(ManageStaff manageStaff) throws IOException {

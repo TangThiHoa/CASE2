@@ -112,7 +112,7 @@ public class ManageStaff {
     public void updateWorking(int id) {
         int index = findIndexById(id);
         if (index == -1) {
-            System.out.println("Không tìm thấy , vui lòng nhập lại ");
+            System.err.println("Không tìm thấy , vui lòng nhập lại ");
         } else {
             staffList.get(index).setStatus("Đang làm ");
             System.out.println("Cập nhật thành công !");

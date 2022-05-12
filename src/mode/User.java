@@ -64,8 +64,8 @@ public class User {
 
     @Override
     public String toString() {
-        return  id + "," + username +","
-                + password + "," +
+        return   "ID : " + id + "," +" Name : " + username +"," +
+                " Mật khẩu : " + password + "," + " Người dùng : " +
                  role.getName() ;
     }
 }

@@ -79,12 +79,12 @@ public class Staff {
     @Override
     public String toString() {
         return
-                "id=" + id +
-                        ", name='" + name + '\'' +
-                        ", type='" + type + '\'' +
-                        ", status='" + status + '\'' +
-                        ", salary='" + salary + '\'' +
-                        ", user add=" + user.getUsername()
+                "ID : " + id +
+                        ", Tên : " + name +
+                        ", Loại : " + type +
+                        ", Trạng thái : " + status +
+                        ", Lương : " + salary +
+                        ", Người dùng : " + user.getUsername()
                 ;
     }
 }

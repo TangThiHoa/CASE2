@@ -23,13 +23,15 @@ public class Main {
             sc.nextLine();
             switch (choice) {
                 case 1:
-                    System.out.println("Đăng Nhập");
+                    System.out.println("ĐĂNG NHẬP :");
+                    System.out.println("                 ");
                     System.out.println("Nhập tài khoản ");
                     username = sc.nextLine();
                     System.out.println("Nhập mật khẩu");
                     password = sc.nextLine();
                     if (manageUser.login(username, password) == 1) {
-                        System.out.println("Đăng nhập thành công ");
+                        System.out.println("               ");
+                        System.out.println("Đăng nhập thành công !!!");
                         System.out.println(manageUser.showUserName(username));
                         int choice1 = -1;
                         while (choice1 != 0) {
@@ -94,6 +96,9 @@ public class Main {
                                 case 3:
                                     UserMenu.changePass(manageUser);
                                     break;
+                                case 4 :UserMenu.addRole(manageUser);
+                                    System.err.println("Tính năng đang được cập nhật , vui lòng thử lại sau ...");
+                                    break;
                                 case 0:
                                     ManageUser.currentUser = null;
                                     break;
@@ -101,7 +106,7 @@ public class Main {
 
                             }
                         }
-                    }else System.out.println("Tên đăng nhập hoặc mật khẩu bị sai");
+                    }else System.err.println("Tên đăng nhập / mật khẩu bị sai , vui lòng thử lại ...");
                     break;
                 case 2 :
                     UserMenu.register(manageUser);
