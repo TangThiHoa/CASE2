@@ -69,12 +69,12 @@ public class SatffMenu {
         } else System.out.println("ID nhân viên đã tồn tại");
     }
 
-    public static void menuStaffEdit() throws IOException {
+    public static void menuStaffEdit(ManageStaff manageStaff,ManageUser manageUser) throws IOException {
         Scanner sc = new Scanner(System.in);
-        ManageUser manageUser = new ManageUser();
         System.out.println("Nhập ID nhân viên cần tìm");
         int id = sc.nextInt();
-        if (manageUser.findIndexById(id) != 1) {
+        sc.nextLine();
+        if (manageStaff.findIndexById(id) != -1) {
             System.out.println("Nhập tên nhân viên : ");
             String name = sc.nextLine();
             System.out.println("Nhập loại nhân viên  ");
@@ -82,11 +82,11 @@ public class SatffMenu {
             System.out.println("Nhập trạng thái nhân viên  ");
             String status = sc.nextLine();
             System.out.println("Nhập lương");
-            int salary = sc.nextInt();
+            String salary = sc.nextLine();
             User user = manageUser.findById(ManageUser.currentUser.getId());
-            manageUser.edit(id, new User(id, name, stype, status, salary, user));
+            manageStaff.edit(id, new Staff(id,name,stype,status,salary,user));
             System.out.println("Bạn đã sửa thành công");
-            FileUserCSV.writeToFile(Path.PATH_USER,manageUser.getUserList());
+            FileStaffCSV.writeToFile(Path.PATH_STAFF,manageStaff.getStaffList());
 
         } else System.out.println("Không tìm thấy ID");
     }
