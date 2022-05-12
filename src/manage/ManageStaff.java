@@ -42,7 +42,13 @@ public class ManageStaff {
         }
         return -1;
     }
-
+    public void showById(int id){
+        for (Staff staff : staffList){
+            if (id==staff.getId()){
+                System.out.println(staff);
+            }
+        }
+    }
     public void edit(int id, Staff staff) {
         staffList.set(findIndexById(id), staff);
     }
@@ -72,7 +78,7 @@ public class ManageStaff {
     public void filterFullTime() {
         boolean check = false;
         for (int i = 0; i < staffList.size(); i++) {
-            if (staffList.get(i).getType().equals("fulltime")) {
+            if (staffList.get(i).getType().equals("fulltime ")) {
                 System.out.println(staffList.get(i));
                 check = true;
             }
@@ -83,7 +89,7 @@ public class ManageStaff {
     public void calSalaryParttime() {
         int sum = 0;
         for (int i = 0; i < staffList.size(); i++) {
-            if (staffList.get(i).getType().equals("parttime")) {
+            if (staffList.get(i).getType().equals("parttime ")) {
                 System.out.println(staffList.get(i).getName() + " có lương : " + staffList.get(i).getSalary());
                 sum += Integer.parseInt(staffList.get(i).getSalary());
             }

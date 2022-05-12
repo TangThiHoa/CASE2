@@ -40,12 +40,11 @@ public class SatffMenu {
         manageStaff.showAll();
     }
 
-    public static void menuStaffShowName() throws IOException {
-        ManageStaff manageStaff = new ManageStaff();
+    public static void menuStaffShowName(ManageStaff manageStaff ) throws IOException {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập ID nhân viên cần tìm :");
         int staffName = sc.nextInt();
-        manageStaff.findIndexById(staffName);
+        manageStaff.showById(staffName);
     }
 
     public static void menuStaffAdd(ManageStaff manageStaff,ManageUser manageUser) throws IOException {

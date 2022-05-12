@@ -67,7 +67,7 @@ public class Main {
                                                 SatffMenu.menuSaPart(manageStaff);
                                                 break;
                                             case 6:
-                                                SatffMenu.menuStaffShowName();
+                                                SatffMenu.menuStaffShowName(manageStaff);
                                                 break;
                                             case 7:
                                                 if (ManageUser.currentUser.getRole().getName().equals("Admin")) {
