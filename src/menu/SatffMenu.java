@@ -74,8 +74,7 @@ public class SatffMenu {
         int id = sc.nextInt();
         sc.nextLine();
         if (manageStaff.findIndexById(id) != -1) {
-            System.out.println("Nhập tên nhân viên : ");
-            String name = sc.nextLine();
+           manageStaff.showById(id);
             System.out.println("Nhập loại nhân viên  ");
             String stype = sc.nextLine();
             System.out.println("Nhập trạng thái nhân viên  ");
@@ -83,8 +82,9 @@ public class SatffMenu {
             System.out.println("Nhập lương");
             String salary = sc.nextLine();
             User user = manageUser.findById(ManageUser.currentUser.getId());
-            manageStaff.edit(id, new Staff(id,name,stype,status,salary,user));
+            manageStaff.edit(id, new Staff(id,manageStaff.update(id),stype,status,salary,user));
             System.out.println("Bạn đã sửa thành công");
+            manageStaff.showById(id);
             FileStaffCSV.writeToFile(Path.PATH_STAFF,manageStaff.getStaffList());
 
         } else System.out.println("Không tìm thấy ID");

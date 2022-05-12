@@ -140,7 +140,9 @@ public class ManageStaff {
         }
         return -1;
     }
-
+    public String update(int id){
+       return staffList.get(findIndexById(id)).getName();
+    }
     public void showByStatusOn(int id) {
         for (int i = 0; i < staffList.size(); i++) {
             if (staffList.get(i).getId() == id && staffList.get(i).getStatus().equals("Đang làm ")) {
